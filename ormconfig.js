@@ -14,7 +14,6 @@ switch (process.env.NODE_ENV) {
       password: 'postgres',
       port: 5432,
       entities: ['**/*.entity.js'],
-      // migrationsRun: true,
       synchronize: true,
     });
     break;
