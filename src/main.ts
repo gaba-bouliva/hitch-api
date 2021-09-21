@@ -15,3 +15,7 @@ async function bootstrap() {
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
+
+// To deploy to heroku some dev dependencies are required
+// so set NPM_CONFIG_PRODUCTION to false
+// like so heroku config:set NPM_CONFIG_PRODUCTION=false

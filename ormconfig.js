@@ -40,7 +40,7 @@ switch (process.env.NODE_ENV) {
     });
 
   default:
-    throw new Error('Unknown Environment');
+    throw new Error('Unknown Environment...(development | production | test)');
 }
 
 module.exports = dbConfig;
