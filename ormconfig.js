@@ -34,6 +34,7 @@ switch (process.env.NODE_ENV) {
     var herokuDbConnectionOptions = PostgressConnectionStringParser.parse(
       process.env.DATABASE_URL,
     );
+    console.log('DB Conn Object', herokuDbConnectionOptions);
     Object.assign(dbConfig, {
       type: 'postgres',
       name: herokuDbConnectionOptions.name,
@@ -51,7 +52,7 @@ switch (process.env.NODE_ENV) {
     });
 
   default:
-    throw new Error('Unknown Environment...(development | production | test)');
+    throw new Error(`Unknown Environment ${process.env.NODE_ENV}`);
 }
 
 module.exports = dbConfig;
