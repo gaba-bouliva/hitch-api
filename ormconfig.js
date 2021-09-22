@@ -1,3 +1,5 @@
+var PostgressConnectionStringParser = require('pg-connection-string').parse;
+
 var dbConfig = {
   migrations: ['migrations/*.js'],
   cli: {
@@ -29,10 +31,15 @@ switch (process.env.NODE_ENV) {
     });
     break;
   case 'production':
+    var herokuDbConnectionOptions = parse(process.env.DATABASE_URL);
     Object.assign(dbConfig, {
       type: 'postgres',
-      url: process.env.DATABASE_URL,
-      database: process.env.DATABASE_URL,
+      name: herokuDbConnectionOptions.name,
+      host: herokuDbConnectionOptions.host,
+      port: herokuDbConnectionOptions.port,
+      username: herokuDbConnectionOptions.username,
+      password: herokuDbConnectionOptions.password,
+      database: herokuDbConnectionOptions.database,
       migrationsRun: true,
       entities: ['**/*.entity.js'],
       ssl: true,
