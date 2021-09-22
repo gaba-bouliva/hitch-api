@@ -31,7 +31,9 @@ switch (process.env.NODE_ENV) {
     });
     break;
   case 'production':
-    var herokuDbConnectionOptions = parse(process.env.DATABASE_URL);
+    var herokuDbConnectionOptions = PostgressConnectionStringParser.parse(
+      process.env.DATABASE_URL,
+    );
     Object.assign(dbConfig, {
       type: 'postgres',
       name: herokuDbConnectionOptions.name,
