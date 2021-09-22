@@ -37,10 +37,9 @@ switch (process.env.NODE_ENV) {
     console.log('DB Conn Object', herokuDbConnectionOptions);
     Object.assign(dbConfig, {
       type: 'postgres',
-      name: herokuDbConnectionOptions.name,
       host: herokuDbConnectionOptions.host,
       port: herokuDbConnectionOptions.port,
-      username: herokuDbConnectionOptions.username,
+      username: herokuDbConnectionOptions.user,
       password: herokuDbConnectionOptions.password,
       database: herokuDbConnectionOptions.database,
       migrationsRun: true,
